@@ -13,7 +13,7 @@ const Welcome = ({ username, setUsername, room, setRoom, setSocket }) => {
   const joinRoom = (e) => {
     e.preventDefault();
     if(username.trim().length > 0 && room != "select-room" && room.trim().length > 0) {
-      const socket = io.connect("http://localhost:4000");
+      const socket = io.connect(`${import.meta.env.VITE_API}`);
       setSocket(socket);
       navigate("/chat", { replace: true });
     } else {
@@ -23,7 +23,7 @@ const Welcome = ({ username, setUsername, room, setRoom, setSocket }) => {
   }
   return (
     <div className="flex items-center h-screen justify-center bg-[#e9ebea]">
-      <div className=" w-1/4 bg-gray-100 shadow-md py-10 px-10 rounded-md">
+      <div className=" w-[90%] xl:w-1/4 bg-gray-100 shadow-md py-10 px-10 rounded-md">
         <form onSubmit={joinRoom}>
           <h2 className="text-center text-4xl font-bold mb-8 text-[#359b92]">Chat Time</h2>
           <div className="mb-5">
